@@ -662,6 +662,12 @@ fn transaction_build(
 		Err(_e) => None,
 	};
 
+	// Resetable //
+	transaction.gas_price = Some(U256::zero());
+	transaction.max_priority_fee_per_gas = Some(U256::zero());
+	transaction.max_fee_per_gas = Some(U256::zero());
+	//////////////
+
 	// Block hash.
 	transaction.block_hash = block
 		.as_ref()
