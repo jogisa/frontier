@@ -1,0 +1,36 @@
+[package]
+name = "fp-ext"
+authors = ["phron-platform"]
+edition = "2021"
+homepage = "https://www.phron.ai"
+license = "Apache-2.0"
+repository = "https://github.com/phronesis"
+version = "0.1.0"
+
+[dependencies]
+ethereum-types = { workspace = true }
+
+# Frontier
+evm = { workspace = true, features = ["tracing"] }
+evm-runtime = { workspace = true, features = ["tracing"] }
+evm-gasometer = { workspace = true, features = ["tracing"] }
+
+# Substrate
+parity-scale-codec = { workspace = true }
+sp-externalities = { workspace = true }
+sp-runtime-interface = { workspace = true }
+sp-std = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+	"parity-scale-codec/std",
+	"ethereum-types/std",
+	"sp-externalities/std",
+	"sp-runtime-interface/std",
+	"sp-std/std",
+	"evm/std",
+	"evm-runtime/std",
+	"evm-gasometer/std",
+]
+evm-tracing = ["evm-runtime/tracing", "evm-gasometer/tracing"]

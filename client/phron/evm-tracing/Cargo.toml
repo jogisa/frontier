@@ -1,0 +1,42 @@
+[package]
+name = "fc-evm-tracing"
+authors = ["phron-platform"]
+edition = "2021"
+homepage = "https://www.phron.ai"
+license = "Apache-2.0"
+repository = "https://github.com/phronesis"
+version = "0.1.0"
+
+[dependencies]
+environmental = { workspace = true }
+
+ethereum-types = { workspace = true, features = ["std"] }
+hex = { workspace = true, features = ["serde"] }
+serde = { workspace = true, features = ["derive", "std"] }
+serde_json = { workspace = true }
+
+sp-runtime-interface = { workspace = true }
+
+fp-rpc-phron = { workspace = true }
+
+evm = { workspace = true, features = ["with-codec", "tracing"] }
+evm-gasometer = { workspace = true, features = ["tracing"] }
+evm-runtime = { workspace = true, features = ["tracing"] }
+
+# Substrate
+parity-scale-codec = { workspace = true }
+sp-std = { workspace = true, features = ["std"] }
+
+
+[features]
+default = ["std"]
+std = [
+	"sp-runtime-interface/std",
+	"parity-scale-codec/std",
+	"environmental/std",
+	"evm-gasometer/std",
+	"evm-runtime/std",
+	"fp-rpc-phron/std",
+	"evm/std",
+]
+evm-tracing = ["evm-gasometer/tracing", "evm-runtime/tracing", "evm/tracing"]

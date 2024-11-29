@@ -1,0 +1,18 @@
+[package]
+name = "fc-rpc-core-txpool"
+authors = ["phron-platform"]
+edition = "2021"
+homepage = "https://www.phron.ai"
+license = "Apache-2.0"
+repository = "https://github.com/phronesis"
+version = "0.6.0"
+
+[dependencies]
+ethereum = { workspace = true, features = ["std", "with-codec"] }
+ethereum-types = { workspace = true, features = ["std"] }
+jsonrpsee = { workspace = true, features = ["macros", "server"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+
+# Frontier
+fc-rpc-core = { workspace = true }

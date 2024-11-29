@@ -1,0 +1,39 @@
+[package]
+name = "fc-rpc-debug"
+authors = ["phron-platform"]
+edition = "2021"
+homepage = "https://www.phron.ai"
+license = "Apache-2.0"
+repository = "https://github.com/phron-platform/phron-frontier"
+version = "0.1.0"
+
+[dependencies]
+futures = { workspace = true, features = ["compat"] }
+hex-literal = { workspace = true }
+jsonrpsee = { workspace = true, features = ["macros", "server"] }
+tokio = { workspace = true, features = ["sync", "time"] }
+
+# phron
+fc-evm-tracing = { workspace = true }
+fc-rpc-core-debug = { workspace = true }
+fc-rpc-core-types = { workspace = true }
+
+# Substrate
+sc-client-api = { workspace = true }
+sc-utils = { workspace = true }
+sp-api = { workspace = true, features = ["std"] }
+sp-block-builder = { workspace = true, features = ["std"] }
+sp-blockchain = { workspace = true }
+sp-core = { workspace = true, features = ["std"] }
+sp-io = { workspace = true, features = ["std"] }
+sp-runtime = { workspace = true, features = ["std"] }
+
+# Frontier
+ethereum = { workspace = true, features = ["std", "with-codec"] }
+ethereum-types = { workspace = true, features = ["std"] }
+fc-api = { workspace = true }
+fc-consensus = { workspace = true }
+fc-db = { workspace = true }
+fc-rpc = { workspace = true, features = ["rpc-binary-search-estimate"] }
+fc-storage = { workspace = true }
+fp-rpc-phron = { workspace = true, features = ["default"] }

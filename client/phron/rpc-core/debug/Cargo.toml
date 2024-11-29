@@ -1,0 +1,22 @@
+[package]
+name = "fc-rpc-core-debug"
+authors = ["phron-platform"]
+edition = "2021"
+homepage = "https://www.phron.ai"
+license = "Apache-2.0"
+repository = "https://github.com/phronesis"
+version = "0.1.0"
+
+[dependencies]
+ethereum-types = { workspace = true, features = ["std"] }
+futures = { workspace = true, features = ["compat"] }
+jsonrpsee = { workspace = true, features = ["macros", "server"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+
+# Substrate
+sp-core = { workspace = true, features = ["std"] }
+
+# Frontier
+fc-evm-tracing = { workspace = true }
+fc-rpc-core-types = { workspace = true }
