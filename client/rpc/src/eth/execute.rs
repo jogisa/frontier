@@ -418,7 +418,7 @@ where
 		let block_data_cache = Arc::clone(&self.block_data_cache);
 
 		// Define the lower bound of estimate
-		const MIN_GAS_PER_TX: U256 = U256([0, 0, 0, 0]);
+		const MIN_GAS_PER_TX: U256 = U256([21_000, 0, 0, 0]);
 
 		// Get substrate hash and runtime api
 		let (substrate_hash, api) = match frontier_backend_client::native_block_id::<B, C>(
