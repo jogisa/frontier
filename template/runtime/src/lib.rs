@@ -647,7 +647,7 @@ impl_runtime_apis! {
 		}
 
 		fn gas_price() -> U256 {
-			let (gas_price, _) = <Runtime as pallet_evm::Config>::FeeCalculator::min_gas_price();
+			let (gas_price, _) = <Runtime as pallet_evm::Config>::FeeCalculator::min_gas_price(None);
 			gas_price
 		}
 

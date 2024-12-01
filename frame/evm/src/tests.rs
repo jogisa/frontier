@@ -873,7 +873,7 @@ fn issuance_after_tip() {
 		result.expect("EVM can be called");
 		let after_tip = <Test as Config>::Currency::total_issuance();
 		// Only base fee is burned
-		let base_fee: u64 = <Test as Config>::FeeCalculator::min_gas_price()
+		let base_fee: u64 = <Test as Config>::FeeCalculator::min_gas_price(None)
 			.0
 			.unique_saturated_into();
 		assert_eq!(after_tip, (before_tip - (base_fee * 21_000)));
@@ -922,7 +922,7 @@ fn refunds_should_work() {
 			None,
 			Vec::new(),
 		);
-		let (base_fee, _) = <Test as Config>::FeeCalculator::min_gas_price();
+		let (base_fee, _) = <Test as Config>::FeeCalculator::min_gas_price(None);
 		let total_cost = (U256::from(21_000) * base_fee) + U256::from(1);
 		let after_call = EVM::account_basic(&H160::default()).0.balance;
 		assert_eq!(after_call, before_call - total_cost);
@@ -954,7 +954,7 @@ fn refunds_and_priority_should_work() {
 			None,
 			Vec::new(),
 		);
-		let (base_fee, _) = <Test as Config>::FeeCalculator::min_gas_price();
+		let (base_fee, _) = <Test as Config>::FeeCalculator::min_gas_price(None);
 		let actual_tip = (max_fee_per_gas - base_fee).min(tip) * used_gas;
 		let total_cost = (used_gas * base_fee) + actual_tip + U256::from(1);
 		let after_call = EVM::account_basic(&H160::default()).0.balance;
