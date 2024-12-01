@@ -260,8 +260,8 @@ where
 			)),
 			_ => used_gas.into(),
 		};
-		let actual_fee = effective_gas.saturating_mul(1);//effective_gas.saturating_mul(total_fee_per_gas);
-		let actual_base_fee = effective_gas.saturating_mul(1)//effective_gas.saturating_mul(base_fee);
+		let actual_fee = effective_gas.saturating_mul(total_fee_per_gas);
+		let actual_base_fee = effective_gas.saturating_mul(base_fee);
 
 		log::debug!(
 			target: "evm",
