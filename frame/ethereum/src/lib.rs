@@ -493,7 +493,7 @@ impl<T: Config> Pallet<T> {
 		let (weight_limit, proof_size_base_cost) = Self::transaction_weight(&transaction_data);
 		// let (base_fee, _) = T::FeeCalculator::min_gas_price();
 		let (who, _) = pallet_evm::Pallet::<T>::account_basic(&origin);
-		let (base_fee, _) = T::FeeCalculator::min_gas_price(Some(&origin));
+		let (base_fee, _) = T::FeeCalculator::min_gas_price(Some(origin.clone()));
 
 		let _ = CheckEvmTransaction::<InvalidTransactionWrapper>::new(
 			CheckEvmTransactionConfig {
@@ -862,7 +862,7 @@ impl<T: Config> Pallet<T> {
 		let (weight_limit, proof_size_base_cost) = Self::transaction_weight(&transaction_data);
 		// let (base_fee, _) = T::FeeCalculator::min_gas_price();
 		let (who, _) = pallet_evm::Pallet::<T>::account_basic(&origin);
-		let (base_fee, _) = T::FeeCalculator::min_gas_price(Some(&origin));
+		let (base_fee, _) = T::FeeCalculator::min_gas_price(Some(origin.clone()));
 
 		let _ = CheckEvmTransaction::<InvalidTransactionWrapper>::new(
 			CheckEvmTransactionConfig {

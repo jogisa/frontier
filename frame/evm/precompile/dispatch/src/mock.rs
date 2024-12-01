@@ -112,7 +112,7 @@ impl pallet_timestamp::Config for Test {
 
 pub struct FixedGasPrice;
 impl FeeCalculator for FixedGasPrice {
-	fn min_gas_price(who: Option<&sp_core::H160>) -> (U256, Weight) {
+	fn min_gas_price(who: Option<sp_core::H160>) -> (U256, Weight) {
 		// Return some meaningful gas price and weight
 		(1_000_000_000u128.into(), Weight::from_parts(7u64, 0))
 	}

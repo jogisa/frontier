@@ -91,7 +91,7 @@ where
 		) -> (ExitReason, R),
 		R: Default,
 	{
-		let (base_fee, weight) = T::FeeCalculator::min_gas_price(Some(&source));
+		let (base_fee, weight) = T::FeeCalculator::min_gas_price(Some(source.clone()));
 
 		#[cfg(feature = "forbid-evm-reentrancy")]
 		if IN_EVM.with(|in_evm| in_evm.replace(true)) {
@@ -373,7 +373,7 @@ where
 		proof_size_base_cost: Option<u64>,
 		evm_config: &evm::Config,
 	) -> Result<(), RunnerError<Self::Error>> {
-		let (base_fee, mut weight) = T::FeeCalculator::min_gas_price(Some(&source));
+		let (base_fee, mut weight) = T::FeeCalculator::min_gas_price(Some(source.clone()));
 		let (source_account, inner_weight) = Pallet::<T>::account_basic(&source);
 		weight = weight.saturating_add(inner_weight);
 
